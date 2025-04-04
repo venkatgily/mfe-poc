@@ -16,8 +16,13 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            babelrc: true, // uses root .babelrc
+          },
+        },
       }
     ]
   },
@@ -29,8 +34,8 @@ module.exports = {
         "./Footer": "./src/Footer"
       },
       shared: {
-        react: { singleton: true, eager: false, requiredVersion: false },
-        "react-dom": { singleton: true, eager: false, requiredVersion: false },
+        react: { singleton: true, eager: true, requiredVersion: false },
+        "react-dom": { singleton: true, eager: true, requiredVersion: false }
       }
     }),
     new HtmlWebpackPlugin({ template: "./public/index.html" })

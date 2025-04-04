@@ -1,11 +1,25 @@
 {
   "name": "microfrontend-demo",
-  "scripts": {
-    "start:all": "concurrently \"npm:start:header\" \"npm:start:footer\" \"npm:start:shell\"",
-    "start:header": "npm run start --workspace=header",
-    "start:footer": "npm run start --workspace=footer",
-    "start:shell": "npm run start --workspace=shell"
-  },
   "private": true,
-  "workspaces": ["shell", "header", "footer"]
+  "workspaces": ["shell", "header", "footer"],
+  "scripts": {
+    "start:all": "concurrently \"npm run start:shell\" \"npm run start:header\" \"npm run start:footer\"",
+    "start:shell": "npm run start --workspace=shell",
+    "start:header": "npm run start --workspace=header",
+    "start:footer": "npm run start --workspace=footer"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "@babel/preset-react": "^7.23.0",
+    "babel-loader": "^9.1.3",
+    "concurrently": "^8.2.0"
+  },
+  "babel": {
+    "extends": "../.babelrc"
+  }
 }
