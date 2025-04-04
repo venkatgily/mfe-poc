@@ -1,0 +1,11 @@
+{
+  "name": "microfrontend-demo",
+  "scripts": {
+    "start:all": "concurrently \"npm:start:header\" \"npm:start:footer\" \"npm:start:shell\"",
+    "start:header": "npm run start --workspace=header",
+    "start:footer": "npm run start --workspace=footer",
+    "start:shell": "npm run start --workspace=shell"
+  },
+  "private": true,
+  "workspaces": ["shell", "header", "footer"]
+}
